@@ -1,6 +1,14 @@
 # royalroad-reader
 Simple python script to fetch a story/web novel from https://www.royalroad.com and convert it to epub ebook format.
 
+# Features
+
+* Retrieve automatically all the chapters of the given story
+* Support table of content for ebook conversion
+* Support CSS rules for different stories (e.g. "Everybody Love Large Chest")
+* Very low memory and performance footprint
+
+
 # Usage
 
 This script uses requests_html python package. https://html.python-requests.org/. Install it. 
