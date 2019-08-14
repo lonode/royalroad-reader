@@ -5,6 +5,7 @@ Simple python script to fetch a story/web novel from https://www.royalroad.com a
 
 * Retrieve automatically all the chapters of the given story
 * Support table of content for ebook conversion
+* Support author note at the end of the chapter
 * Support CSS rules for different stories (e.g. "Everybody Love Large Chest")
 * Very low memory and performance footprint
 
