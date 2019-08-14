@@ -41,17 +41,31 @@ f = open(file_name,"w+",encoding="utf-8")
 f.write(CSS)
 for i in range(1,nb_chapters+1):
     try:
-            s = session.get(next_url)
-            S=""
-            chapter_title = (s.html.find('h1.font-white')[0]).text
-            S+='<h1 class=\"chapter\">'+chapter_title+'</h1>\n'
-            chapter_content = s.html.find('.chapter-inner',first=True).html
-            S+=chapter_content
-            next_url = (s.html.find('.btn.btn-primary.col-xs-4')[2]).absolute_links
-            for x in next_url:
-                next_url=x
-            f.write(S)
-            print(i," ",chapter_title)
+        
+        s = session.get(next_url)
+        S=""
+        
+        #Fetch title
+        chapter_title = (s.html.find('h1.font-white')[0]).text
+        S+='<h1 class=\"chapter\">' + chapter_title + '</h1>\n'
+        
+        #Fetch the chapter content
+        chapter_content = s.html.find('.chapter-inner',first=True).html
+        S+=chapter_content
+        
+        #Fetch the author note (if there is one)
+        author_note = s.html.find('.portlet-body.author-note')
+        if(len(author_note)>0): 
+            author_note = author_note[0].html
+            S+='<h3 class=\"author_note\"> Author note </h3>\n'
+            S+=author_note
+            
+        #Fetch the url of the next chapter
+        next_url = "https://www.royalroad.com" + (s.html.find('[rel=next]')[0]).attrs.get("href")
+
+        #Write the whole content in the file
+        f.write(S)
+        print(i," ",chapter_title)
     except:
         print("Error on chapter",i)
         f.close()
