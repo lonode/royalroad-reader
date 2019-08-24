@@ -29,3 +29,4 @@ It reads the content of the url given ( url_of_story ) it goes to the next chapt
 
 To convert to your preferred ebook format (AZW3,MOBI,EPUB..) you need to use Calibre : https://en.wikipedia.org/wiki/Calibre_(software).  
 Simply import the html file into Calibre (it automatically creates an epub ebook) and you will be able to convert it to your preferred format. 
+PS : To have all the images in your kindle, you need to download them manually (otherwise they will be in URL format in the kindle, and you will need an internet connexion to view them). To do so, in calibre, convert the ebook to your format, edit the book, and then tools->download ressources.
