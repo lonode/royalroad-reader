@@ -99,7 +99,7 @@ def main(next_url,nb_chapters,file_name,writeFile=True):
 
 
 def printUsage():
-    print("Usage :\n   fetch_book.py url_of_story number_of_chapters name_of_ebook")
+    print("Usage :\n   fetch_book.py url_of_chapter number_of_chapters name_of_ebook")
 
 
 if __name__ == "__main__":
