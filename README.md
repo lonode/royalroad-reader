@@ -1,3 +1,8 @@
+# ARCHIVE NOTICE
+
+This repository is archived and is now included in the more useful and more complete https://github.com/lonode/royalroad-fetchAndConvert 
+A feature is added : Conversion and push to your selected device
+
 # royalroad-reader
 Simple python script to fetch a story/web novel from https://www.royalroad.com and convert it to epub ebook format.
 
