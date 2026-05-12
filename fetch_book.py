@@ -55,10 +55,17 @@ for i in range(1,nb_chapters+1):
         
         #Fetch the author note (if there is one)
         author_note = s.html.find('.portlet-body.author-note')
-        if(len(author_note)>0): 
-            author_note = author_note[0].html
+        if(len(author_note)==1): 
+            note_content = author_note[0].html
             S+='<h3 class=\"author_note\"> Author note </h3>\n'
-            S+=author_note
+            S+=note_content
+        elif(len(author_note)==2):
+            note_content = author_note[0].html
+            S+='<h3 class=\"author_note\"> Author note top page </h3>\n'
+            S+=note_content
+            note_content = author_note[1].html
+            S+='<h3 class=\"author_note\"> Author note bottom page </h3>\n'
+            S+=note_content
             
         #Fetch the url of the next chapter
         next_url = "https://www.royalroad.com" + (s.html.find('[rel=next]')[0]).attrs.get("href")
