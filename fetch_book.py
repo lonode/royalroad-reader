@@ -1,5 +1,6 @@
 from requests_html import HTMLSession
 import sys
+import time
 
 #GNU GPLv3 License https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -45,6 +46,12 @@ for i in range(1,nb_chapters+1):
         s = session.get(next_url)
         S=""
         
+        # Website implemented protection against scraping
+        # "Slow down!"
+        while(s.status_code == 429):
+            time.sleep(0.2)
+            s = session.get(next_url)
+
         #Fetch title
         chapter_title = (s.html.find('h1.font-white')[0]).text
         S+='<h1 class=\"chapter\">' + chapter_title + '</h1>\n'
