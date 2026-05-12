@@ -50,6 +50,8 @@ def main(next_url,nb_chapters,file_name,writeFile=True):
             #Fetch title
             chapter_title = (s.html.find('h1.font-white')[0]).text
             S+='<h1 class=\"chapter\">' + chapter_title + '</h1>\n'
+
+            print(i," ",chapter_title)
             
             #Fetch the chapter content
             chapter_content = s.html.find('.chapter-inner',first=True).html
@@ -69,26 +71,32 @@ def main(next_url,nb_chapters,file_name,writeFile=True):
                 S+='<h3 class=\"author_note\"> Author note bottom page </h3>\n'
                 S+=note_content
                 
-            #Fetch the url of the next chapter
-            next_url = "https://www.royalroad.com" + (s.html.find('[rel=next]')[0]).attrs.get("href")
+            try:
+                #Fetch the url of the next chapter
+                next_url = "https://www.royalroad.com" + (s.html.find('[rel=next]')[0]).attrs.get("href")
+            except:
+                print("Last chapter ! Exiting...")
+                break
+
 
             book += S
 
             if writeFile:
                 #Write the whole content in the file
                 f.write(S)
-            print(i," ",chapter_title)
+            
         except:
-            print("Error on chapter",i)
+            print("Error on chapter",i,sys.exc_info()[0])
 
             if writeFile:
                 f.close()
 
             break
-        
+    
+    f.close()    
     return S
         
-    f.close()
+    
 
 
 def printUsage():
