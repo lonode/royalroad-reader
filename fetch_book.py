@@ -70,20 +70,19 @@ def main(next_url,nb_chapters,file_name,writeFile=True):
                 note_content = author_note[1].html
                 S+='<h3 class=\"author_note\"> Author note bottom page </h3>\n'
                 S+=note_content
-                
+            
+            book += S
+
+            if writeFile:
+                #Write the whole content in the file
+                f.write(S)
+
             try:
                 #Fetch the url of the next chapter
                 next_url = "https://www.royalroad.com" + (s.html.find('[rel=next]')[0]).attrs.get("href")
             except:
                 print("Last chapter ! Exiting...")
                 break
-
-
-            book += S
-
-            if writeFile:
-                #Write the whole content in the file
-                f.write(S)
             
         except:
             print("Error on chapter",i,sys.exc_info()[0])
