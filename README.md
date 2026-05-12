@@ -3,6 +3,8 @@ Simple python script to fetch a story from royalroad.com and convert it to epub 
 
 # Usage
 
+This script uses requests_html python package. https://html.python-requests.org/. Install it. 
+
   fetch_book.py url_of_story number_of_chapters name_of_ebook
 
 If you want to fetch the best rated story Mother of Learning from the first chapter, execute the following command :
