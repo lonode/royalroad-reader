@@ -13,7 +13,9 @@ Simple python script to fetch a story/web novel from https://www.royalroad.com a
 
 # Libraries used
 
-This script uses requests_html python package. https://html.python-requests.org/. Install it. 
+This script uses requests_html python package. https://html.python-requests.org/. Install it :  
+
+	pip install requests
 
 # Usage
 
@@ -22,7 +24,7 @@ This script uses requests_html python package. https://html.python-requests.org/
 Parameters :  
 
 * url_of_chapter : The URL of the chapter (not of the story homepage!)
-* number_of_chapters : You guessed
+* number_of_chapters : You guessed. If you want the whole book, just enter something like 99999
 * name_of_ebook : The name of the ebook, .html extension will be added when the file is written on the filesystem. 
 
 It reads the chapter content of the URL given ( url_of_chapter ) and goes to the next chapter, and it loops number_of_chapters times.  
